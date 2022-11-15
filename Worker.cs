@@ -1,6 +1,5 @@
 ﻿using EmailSender.Core;
 using Microsoft.Extensions.Hosting;
-using PanoramicData.ConsoleExtensions;
 
 public class Worker : BackgroundService
 {

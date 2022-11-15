@@ -13,10 +13,9 @@ public class Worker : BackgroundService
 
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        Console.Write("Password: ");
-        var password = ConsolePlus.ReadPassword();
-        Console.WriteLine();
+        Console.Write("Sending emails :) ");
+        //var password = ConsolePlus.ReadPassword();
 
-        var result = await _emailSenderService.SendEmailBatchAsync(password);
+        var result = await _emailSenderService.SendEmailBatchAsync();
     }
 }

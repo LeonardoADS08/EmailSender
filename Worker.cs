@@ -1,7 +1,8 @@
 ﻿using EmailSender.Core;
 using Microsoft.Extensions.Hosting;
 
-public class Worker : BackgroundService
+public class Worker
+    : IHostedService
 {
     private readonly IEmailSenderService _emailSenderService;
 
@@ -10,11 +11,15 @@ public class Worker : BackgroundService
         _emailSenderService = emailSenderService;
     }
 
-    protected override async Task ExecuteAsync(CancellationToken stoppingToken)
+    public async Task StartAsync(CancellationToken cancellationToken)
     {
-        Console.Write("Sending emails :) ");
-        //var password = ConsolePlus.ReadPassword();
+        Console.WriteLine("Initializing Email Sender :) ");
 
         var result = await _emailSenderService.SendEmailBatchAsync();
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        return Task.CompletedTask;
     }
 }
